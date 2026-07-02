@@ -1,0 +1,643 @@
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+* { box-sizing: border-box; }
+
+html, body, #root { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; }
+
+button {
+  font-family: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   THEME: CUSTOMER — "The Amber Table"
+   Warm dining-room palette: sand backdrop, wine-red primary,
+   brass accent, deep espresso ink. Ticket-stub reservation cards.
+   ============================================================ */
+.theme-customer {
+  --bg: #EFE1C3;
+  --bg-deep: #E7D3A9;
+  --surface: #FFFCF5;
+  --surface-alt: #FBF3E2;
+  --ink: #2B1E17;
+  --ink-soft: #6B5A47;
+  --primary: #7A2331;
+  --primary-dark: #591923;
+  --accent: #B4842E;
+  --accent-soft: #E4C687;
+  --green: #3F5D3A;
+  --green-bg: #E4EBDD;
+  --red: #A23B34;
+  --red-bg: #F5E1DE;
+  --line: #DDCBA3;
+  --radius: 14px;
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+
+  min-height: 100%;
+  color: var(--ink);
+  font-family: var(--font-body);
+  background:
+    radial-gradient(1100px 500px at 15% -5%, rgba(255,255,255,0.35), transparent 60%),
+    radial-gradient(900px 600px at 100% 0%, rgba(122,35,49,0.06), transparent 55%),
+    repeating-linear-gradient(135deg, rgba(0,0,0,0.015) 0px, rgba(0,0,0,0.015) 2px, transparent 2px, transparent 4px),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
+  background-attachment: fixed;
+}
+
+.theme-customer h1, .theme-customer h2, .theme-customer h3 {
+  font-family: var(--font-display);
+  color: var(--primary-dark);
+  letter-spacing: -0.01em;
+}
+
+.theme-customer h2 { font-size: 1.7rem; font-weight: 600; margin: 0 0 0.35rem; }
+.theme-customer h3 { font-size: 1.15rem; font-weight: 600; margin: 0 0 0.75rem; }
+
+.theme-customer .page-subtitle {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  margin: 0 0 1.5rem;
+}
+
+/* --- Navbar --- */
+.theme-customer .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: linear-gradient(180deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: #F7ECD9;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+
+.theme-customer .navbar .brand {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.3rem;
+  letter-spacing: 0.01em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.theme-customer .navbar .brand .mark {
+  color: var(--accent-soft);
+}
+
+.theme-customer .navbar a, .theme-customer .navbar button {
+  color: #F7ECD9;
+  text-decoration: none;
+  margin-left: 1.4rem;
+  background: none;
+  border: none;
+  font-size: 0.92rem;
+  font-weight: 500;
+  cursor: pointer;
+  opacity: 0.92;
+  transition: opacity 0.15s ease;
+}
+
+.theme-customer .navbar a:hover, .theme-customer .navbar button:hover { opacity: 1; }
+
+.theme-customer .navbar .badge {
+  background: var(--accent);
+  color: var(--primary-dark);
+  padding: 0.15rem 0.55rem;
+  border-radius: 20px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  margin-left: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.theme-customer .navbar .userchip {
+  margin-left: 1.4rem;
+  opacity: 0.85;
+  font-size: 0.9rem;
+}
+
+/* --- Container --- */
+.theme-customer .container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+/* --- Cards (menu-card style) --- */
+.theme-customer .card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.4rem 1.5rem;
+  margin-bottom: 1.1rem;
+  box-shadow: 0 1px 2px rgba(43,30,23,0.04), 0 8px 20px -12px rgba(43,30,23,0.15);
+}
+
+/* --- Reservation ticket stub --- */
+.theme-customer .ticket {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  margin-bottom: 1.25rem;
+  box-shadow: 0 1px 2px rgba(43,30,23,0.05), 0 10px 24px -14px rgba(43,30,23,0.22);
+  overflow: hidden;
+  display: flex;
+}
+
+.theme-customer .ticket-main {
+  flex: 1;
+  padding: 1.25rem 1.4rem;
+}
+
+.theme-customer .ticket-stub {
+  width: 96px;
+  flex-shrink: 0;
+  background: var(--primary);
+  color: #F7ECD9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.75rem 0.5rem;
+  position: relative;
+}
+
+.theme-customer .ticket-divider {
+  width: 0;
+  border-left: 2px dashed rgba(122,35,49,0.28);
+  position: relative;
+}
+
+.theme-customer .ticket-divider::before,
+.theme-customer .ticket-divider::after {
+  content: '';
+  position: absolute;
+  left: -8px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1px solid var(--line);
+}
+.theme-customer .ticket-divider::before { top: -8px; }
+.theme-customer .ticket-divider::after { bottom: -8px; }
+
+.theme-customer .ticket-stub .month {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.85;
+}
+.theme-customer .ticket-stub .day {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+.theme-customer .ticket-stub .time {
+  font-size: 0.78rem;
+  margin-top: 0.3rem;
+  opacity: 0.9;
+}
+
+.theme-customer .ticket-meta {
+  display: flex;
+  gap: 1.1rem;
+  margin-top: 0.5rem;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+}
+
+.theme-customer .ticket-meta strong { color: var(--ink); }
+
+/* --- Forms --- */
+.theme-customer .form-group {
+  margin-bottom: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.theme-customer label {
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--ink);
+}
+
+.theme-customer input, .theme-customer select {
+  padding: 0.65rem 0.75rem;
+  border: 1.5px solid var(--line);
+  border-radius: 9px;
+  font-size: 0.95rem;
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-body);
+}
+
+.theme-customer input:focus, .theme-customer select:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+.theme-customer button.primary {
+  background: var(--primary);
+  color: #F7ECD9;
+  border: none;
+  padding: 0.7rem 1.3rem;
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+.theme-customer button.primary:hover:not(:disabled) { background: var(--primary-dark); }
+.theme-customer button.primary:active:not(:disabled) { transform: scale(0.98); }
+.theme-customer button.primary:disabled { background: var(--accent-soft); color: #8a6a2f; cursor: not-allowed; }
+
+.theme-customer button.secondary {
+  background: var(--surface-alt);
+  color: var(--primary-dark);
+  border: 1.5px solid var(--line);
+  padding: 0.55rem 1rem;
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+.theme-customer button.secondary:hover { border-color: var(--accent); }
+
+.theme-customer button.danger {
+  background: transparent;
+  color: var(--red);
+  border: 1.5px solid rgba(162,59,52,0.35);
+  padding: 0.45rem 0.9rem;
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.theme-customer button.danger:hover { background: var(--red-bg); }
+
+/* --- Messages --- */
+.theme-customer .error-msg {
+  background: var(--red-bg);
+  color: var(--red);
+  border: 1px solid rgba(162,59,52,0.25);
+  padding: 0.7rem 1rem;
+  border-radius: 10px;
+  margin-bottom: 1.1rem;
+  font-size: 0.9rem;
+}
+.theme-customer .success-msg {
+  background: var(--green-bg);
+  color: var(--green);
+  border: 1px solid rgba(63,93,58,0.25);
+  padding: 0.7rem 1rem;
+  border-radius: 10px;
+  margin-bottom: 1.1rem;
+  font-size: 0.9rem;
+}
+
+/* --- Slot picker --- */
+.theme-customer .slots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+  gap: 0.55rem;
+  margin: 0.4rem 0 0.5rem;
+}
+.theme-customer .slot-btn {
+  padding: 0.55rem;
+  border-radius: 9px;
+  border: 1.5px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-align: center;
+  transition: all 0.12s ease;
+}
+.theme-customer .slot-btn:hover:not(.unavailable) { border-color: var(--accent); }
+.theme-customer .slot-btn.selected {
+  background: var(--primary);
+  color: #F7ECD9;
+  border-color: var(--primary);
+}
+.theme-customer .slot-btn.unavailable {
+  background: var(--surface-alt);
+  color: #C4B79B;
+  border-color: var(--line);
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+.theme-customer .empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--ink-soft);
+}
+.theme-customer .empty-state .icon { font-size: 2.4rem; margin-bottom: 0.75rem; }
+
+.theme-customer .status-pill {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+}
+.theme-customer .status-pill.confirmed { background: var(--green-bg); color: var(--green); }
+.theme-customer .status-pill.cancelled { background: var(--red-bg); color: var(--red); }
+
+/* ============================================================
+   THEME: ADMIN — clean operational dashboard
+   Neutral surfaces, single indigo accent, sidebar layout,
+   dense/functional — deliberately un-warm and businesslike.
+   ============================================================ */
+.theme-admin {
+  --bg: #F4F5F7;
+  --surface: #FFFFFF;
+  --border: #E3E6EB;
+  --ink: #1B222C;
+  --muted: #667085;
+  --accent: #3652D9;
+  --accent-soft: #EAEDFC;
+  --success: #17824E;
+  --success-bg: #E7F6EE;
+  --danger: #C0362C;
+  --danger-bg: #FBEAE8;
+  --radius: 10px;
+  --font-body: 'Inter', -apple-system, sans-serif;
+
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  display: flex;
+}
+
+.theme-admin h1, .theme-admin h2, .theme-admin h3 {
+  font-family: var(--font-body);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.theme-admin h2 { font-size: 1.35rem; margin: 0; }
+.theme-admin h3 { font-size: 1rem; margin: 0 0 0.75rem; }
+
+.theme-admin .page-subtitle {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin: 0.2rem 0 0;
+}
+
+/* --- Sidebar shell --- */
+.theme-admin .admin-shell {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.theme-admin .admin-sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  background: var(--ink);
+  color: #E7E9EE;
+  display: flex;
+  flex-direction: column;
+  padding: 1.4rem 1rem;
+}
+
+.theme-admin .admin-sidebar .brand {
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0 0.6rem 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  margin-bottom: 1rem;
+}
+
+.theme-admin .admin-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  flex: 1;
+}
+
+.theme-admin .admin-nav a {
+  display: block;
+  padding: 0.6rem 0.7rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #C6CAD3;
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+.theme-admin .admin-nav a:hover { background: rgba(255,255,255,0.06); color: #fff; }
+.theme-admin .admin-nav a.active { background: var(--accent); color: #fff; }
+
+.theme-admin .admin-sidebar .footer-user {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 1rem;
+  font-size: 0.82rem;
+}
+.theme-admin .admin-sidebar .footer-user .name { font-weight: 600; color: #fff; margin-bottom: 0.5rem; }
+.theme-admin .admin-sidebar .footer-user button {
+  background: rgba(255,255,255,0.08);
+  border: none;
+  color: #E7E9EE;
+  padding: 0.4rem 0.7rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  width: 100%;
+}
+.theme-admin .admin-sidebar .footer-user button:hover { background: rgba(255,255,255,0.15); }
+
+.theme-admin .admin-content {
+  flex: 1;
+  padding: 2rem 2.25rem;
+  max-width: 1180px;
+}
+
+.theme-admin .admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+/* --- Cards / panels --- */
+.theme-admin .card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.3rem;
+  margin-bottom: 1.25rem;
+}
+
+/* --- Forms --- */
+.theme-admin .form-group {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.theme-admin label {
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.theme-admin input, .theme-admin select {
+  padding: 0.5rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  font-size: 0.9rem;
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-body);
+}
+.theme-admin input:focus, .theme-admin select:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.theme-admin button.primary {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.55rem 1rem;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+.theme-admin button.primary:hover:not(:disabled) { background: #2A41B0; }
+.theme-admin button.primary:disabled { background: #A9B4EE; cursor: not-allowed; }
+
+.theme-admin button.secondary {
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--border);
+  padding: 0.45rem 0.85rem;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+.theme-admin button.secondary:hover { background: #F0F1F4; }
+
+.theme-admin button.danger {
+  background: var(--danger-bg);
+  color: var(--danger);
+  border: 1px solid rgba(192,54,44,0.2);
+  padding: 0.35rem 0.75rem;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.theme-admin button.danger:hover { background: #F5D9D6; }
+
+/* --- Messages --- */
+.theme-admin .error-msg {
+  background: var(--danger-bg);
+  color: var(--danger);
+  border: 1px solid rgba(192,54,44,0.2);
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+}
+.theme-admin .success-msg {
+  background: var(--success-bg);
+  color: var(--success);
+  border: 1px solid rgba(23,130,78,0.2);
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+}
+
+/* --- Table --- */
+.theme-admin table.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.86rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.theme-admin table.admin-table th {
+  text-align: left;
+  padding: 0.65rem 0.75rem;
+  background: #FAFBFC;
+  color: var(--muted);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--border);
+}
+.theme-admin table.admin-table td {
+  text-align: left;
+  padding: 0.65rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+.theme-admin table.admin-table tr:last-child td { border-bottom: none; }
+.theme-admin table.admin-table tr:hover td { background: #FAFBFC; }
+
+.theme-admin .status-pill {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+}
+.theme-admin .status-pill.confirmed { background: var(--success-bg); color: var(--success); }
+.theme-admin .status-pill.cancelled { background: var(--danger-bg); color: var(--danger); }
+
+.theme-admin .filter-bar {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.theme-admin .stat-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.theme-admin .stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+}
+.theme-admin .stat-card .num { font-size: 1.6rem; font-weight: 700; }
+.theme-admin .stat-card .label { font-size: 0.78rem; color: var(--muted); margin-top: 0.2rem; }
