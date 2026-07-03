@@ -94,8 +94,7 @@ so the registration endpoint can't be used to mint admin access.
 - No pagination on the admin reservation list — fine at demo scale, would need it for a real restaurant's
   history.
 - No refresh-token rotation; JWTs simply expire after `JWT_EXPIRES_IN` and the user must log in again.
-- Table management UI only supports create + deactivate (no numeric edit-in-place row), though the backend
-  route (`PUT /api/tables/:id`) supports full updates.
+
 
 ## Areas for Improvement (with more time)
 
